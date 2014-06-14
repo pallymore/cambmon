@@ -13,3 +13,10 @@ angular.module('cambMonApp')
       $scope.app = app;
     });
   });
+
+angular.module('cambMonApp')
+  .controller('DynoCtrl', function ($scope, $http, $routeParams) {
+    $http.get('/api/apps/' + $routeParams.name + '/dynos').success(function(dynos) {
+      $scope.dynos = dynos;
+    });
+  });
