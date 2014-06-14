@@ -1,12 +1,11 @@
 <div ng-include="'partials/navbar'"></div>
 
-<div class="row">
-  <div ng-repeat="app in apps">
-    <h1>{{app.name}}</h1>
-    <p>{{app.state}}</p>
-  </div>
-</div>
-
-<div class="footer">
-  Hi there.
+<div ng-repeat="app in apps">
+  <h1>
+    {{app.name}}
+    <small ng-if="app.maintenance">Down For Maintenance</small>
+  </h1>
+  <a href="{{app.web_url}}" target="_blank">
+    {{app.web_url}}
+  </a>
 </div>
