@@ -6,3 +6,10 @@ angular.module('cambMonApp')
       $scope.apps = apps;
     });
   });
+
+angular.module('cambMonApp')
+  .controller('AppCtrl', function ($scope, $http, $routeParams) {
+    $http.get('/api/apps/' + $routeParams.name).success(function(app) {
+      $scope.app = app;
+    });
+  });

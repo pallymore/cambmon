@@ -2,7 +2,9 @@
 
 <div ng-repeat="app in apps">
   <h1>
-    {{app.name}}
+    <a href="/apps/{{app.name}}">
+      {{app.name}}
+    </a>
     <small ng-if="app.maintenance">Down For Maintenance</small>
   </h1>
   <a href="{{app.web_url}}" target="_blank">
