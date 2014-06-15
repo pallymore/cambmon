@@ -4,16 +4,12 @@
       <div class="panel-heading">
         <h3 class="panel-title">
           {{dyno.name}}
-          <span class="badge pull-right">{{dyno.size}}</span>
         </h3>
+        <span class="badge pull-right">{{dyno.size}}</span>
       </div>
       <div class="panel-body">
-        <span class="dyno-icon">
-          <i class="fa {{dynoIconClass(dyno.type)}}"></i>
-        </span>
-        <p class="dyno-msg">
-          {{dynoMessage(dyno)}}
-        </p>
+        <span class="dyno-icon" dyno-type-icon></span>
+        <p class="dyno-msg" dyno-status-message></p>
       </div>
     </div>
   </div>
