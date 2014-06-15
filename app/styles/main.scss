@@ -57,14 +57,80 @@ body {
   padding: 14px 24px;
 }
 
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
+/* Dyno Panels Styles */
+
+.dyno-panel {
+  .panel-heading {
+    text-align: center;
+    padding-bottom: 2em;
+  }
+
+  &.up {
+    @extend .panel-primary;
+  }
+
+  &.down {
+    @extend .panel-warning;
+  }
+
+  &.idle {
+    @extend .panel-default;
+  }
+
+  &.crashed {
+    @extend .panel-danger;
+  }
+
+  &.starting {
+    @extend .panel-info;
+  }
 }
 
-.marketing p + h4 {
-  margin-top: 28px;
+.dyno-msg {
+  text-align: center;
 }
+
+.dyno-icon {
+  display: block;
+  margin: 0 auto;
+  width: 5em;
+  height: 5em;
+  margin-top: -3.5em;
+  margin-bottom: 2em;
+  border-radius: 2.5em;
+  text-align: center;
+  line-height: 6em;
+
+  > .fa {
+    font-size: 2.5em;
+  }
+
+  .up & {
+    @extend .bg-primary;
+    color: #fff;
+  }
+
+  .down & {
+    @extend .bg-warning;
+    color: #8a6d3b;
+  }
+
+  .idle & {
+    background: whitesmoke;
+    color: #999;
+  }
+
+  .crashed & {
+    @extend .bg-danger;
+    color: #a94442;
+  }
+
+  .starting & {
+    @extend .bg-info;
+    color: #31708f;
+  }
+}
+
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {

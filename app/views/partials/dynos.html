@@ -1,13 +1,19 @@
 <div class="row" ng-controller="DynoCtrl">
   <div class="col-md-3" ng-repeat="dyno in dynos">
-    <div class="panel panel-default">
+    <div class="panel dyno-panel {{dyno.state}}">
       <div class="panel-heading">
-        {{dyno.name}}
+        <h3 class="panel-title">
+          {{dyno.name}}
+          <span class="badge pull-right">{{dyno.size}}</span>
+        </h3>
       </div>
       <div class="panel-body">
-        {{dyno.state}}
-        {{dyno.type}}
-        {{dyno.size}}
+        <span class="dyno-icon">
+          <i class="fa {{dynoIconClass(dyno.type)}}"></i>
+        </span>
+        <p class="dyno-msg">
+          {{dynoMessage(dyno)}}
+        </p>
       </div>
     </div>
   </div>
