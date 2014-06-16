@@ -7,6 +7,11 @@
   {{app.web_url}}
 </a>
 
+<button ng-hide="!(app)" ng-click="fetchDynos()" ng-disabled="updating" class="btn btn-success pull-right">
+  <i ng-class="{'fa-spin': updating}" class="fa fa-refresh"></i>
+  Refresh
+</button>
+
 <hr />
 
 <div ng-include="'partials/dynos'"></div>

@@ -13,30 +13,30 @@ angular.module('cambMonApp')
       $scope.app = app;
       $scope.updating = false;
     });
-  });
 
-angular.module('cambMonApp')
-  .controller('DynoCtrl', function ($scope, $http, $routeParams, $interval) {
-    var fetchDynos = function () {
+    $scope.fetchDynos = function () {
+      $scope.updating = true;
+      console.log('called');
       $http.get('/api/apps/' + $routeParams.name + '/dynos').success(function(dynos) {
         $scope.updating = false;
         $scope.dynos = dynos;
       });
     };
-    var autoRefesh = $interval(function () {
-      if ($scope.updating) {
-        return false;
-      }
+  });
 
-      $scope.updating = true;
-      fetchDynos();
+angular.module('cambMonApp')
+  .controller('DynoCtrl', function ($scope, $http, $routeParams, $interval) {
+    var autoRefesh = $interval(function () {
+      if (!$scope.updating) {
+        $scope.fetchDynos();
+      }
     }, 5000);
 
     $scope.$on('$destroy', function() {
       $interval.cancel(autoRefesh);
     });
 
-    fetchDynos();
+    $scope.fetchDynos();
   })
   .directive('dynoStatusMessage', function () {
     var messages = {
