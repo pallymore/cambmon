@@ -11,14 +11,32 @@ angular.module('cambMonApp')
   .controller('AppCtrl', function ($scope, $http, $routeParams) {
     $http.get('/api/apps/' + $routeParams.name).success(function(app) {
       $scope.app = app;
+      $scope.updating = false;
     });
   });
 
 angular.module('cambMonApp')
-  .controller('DynoCtrl', function ($scope, $http, $routeParams) {
-    $http.get('/api/apps/' + $routeParams.name + '/dynos').success(function(dynos) {
-      $scope.dynos = dynos;
+  .controller('DynoCtrl', function ($scope, $http, $routeParams, $interval) {
+    var fetchDynos = function () {
+      $http.get('/api/apps/' + $routeParams.name + '/dynos').success(function(dynos) {
+        $scope.updating = false;
+        $scope.dynos = dynos;
+      });
+    };
+    var autoRefesh = $interval(function () {
+      if ($scope.updating) {
+        return false;
+      }
+
+      $scope.updating = true;
+      fetchDynos();
+    }, 5000);
+
+    $scope.$on('$destroy', function() {
+      $interval.cancel(autoRefesh);
     });
+
+    fetchDynos();
   })
   .directive('dynoStatusMessage', function () {
     var messages = {
