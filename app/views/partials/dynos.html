@@ -8,7 +8,9 @@
         <span class="badge pull-right">{{dyno.size}}</span>
       </div>
       <div class="panel-body">
-        <span class="dyno-icon" dyno-type-icon></span>
+        <span class="dyno-icon">
+          <i ng-class="{'fa-cube': dyno.type==='web', 'fa-file-text-o': dyno.type==='log', 'fa-cogs': dyno.type==='worker'}" class="fa"></i>
+        </span>
         <p class="dyno-msg" dyno-status-message></p>
       </div>
     </div>

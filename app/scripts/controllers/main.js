@@ -53,18 +53,4 @@ angular.module('cambMonApp')
         scope.dynoMessage = messages[scope.dyno.state];
       }
     };
-  })
-  .directive('dynoTypeIcon', function () {
-    var icons = {
-      web: 'fa-cube',
-      log: 'fa-file-text-o',
-      worker: 'fa-cogs'
-    };
-
-    return {
-      template: "<i class='fa {{dynoIcon}}'></i>",
-      link: function (scope) {
-        scope.dynoIcon = icons[scope.dyno.type];
-      }
-    };
   });
