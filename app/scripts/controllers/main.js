@@ -16,7 +16,6 @@ angular.module('cambMonApp')
 
     $scope.fetchDynos = function () {
       $scope.updating = true;
-      console.log('called');
       $http.get('/api/apps/' + $routeParams.name + '/dynos').success(function(dynos) {
         $scope.updating = false;
         $scope.dynos = dynos;
