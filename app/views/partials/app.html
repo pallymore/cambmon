@@ -9,7 +9,7 @@
 
 <button ng-hide="!(app)" ng-click="fetchDynos()" ng-disabled="updating" class="btn btn-success pull-right">
   <i ng-class="{'fa-spin': updating}" class="fa fa-refresh"></i>
-  Refresh
+  Refresh{{updating? 'ing':''}}
 </button>
 
 <hr />
