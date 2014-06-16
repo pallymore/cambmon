@@ -125,6 +125,7 @@ body {
     color: #a94442;
   }
 
+  .restarting &,
   .starting & {
     @extend .bg-info;
     color: #31708f;
