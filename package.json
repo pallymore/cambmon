@@ -14,7 +14,7 @@
     "method-override": "~1.0.0",
     "morgan": "~1.0.0",
     "static-favicon": "~1.0.1",
-    "heroku-log-session": "~0.1.1"
+    "split": "~0.3.0"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
