@@ -19,5 +19,20 @@
   "smarttabs": true,
   "globals": {
     "angular": false
-  }
+  },
+  "predef": [
+    "Backbone",
+    "Underscore",
+    "_",
+    "moment",
+    "JST",
+    "describe",
+    "it",
+    "expect",
+    "beforeEach",
+    "afterEach",
+    "sinon",
+    "App",
+    "EventSource"
+  ]
 }

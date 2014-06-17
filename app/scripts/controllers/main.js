@@ -9,9 +9,25 @@ angular.module('cambMonApp')
 
 angular.module('cambMonApp')
   .controller('AppCtrl', function ($scope, $http, $routeParams) {
-    $http.get('/api/apps/' + $routeParams.name).success(function(app) {
+    var appName = $routeParams.name,
+      appApiUrl = '/api/apps/' + appName;
+
+    var handleAppLogs = function (logs) {
+      console.log(logs.data);
+    };
+
+    $http.get(appApiUrl).success(function(app) {
+      var logStream = new EventSource(appApiUrl + '/logs');
+
       $scope.app = app;
       $scope.updating = false;
+
+      logStream.addEventListener('message', handleAppLogs, false);
+      logStream.addEventListener('error', handleAppLogs, false);
+
+      $scope.$on('$destroy', function() {
+        logStream.close();
+      });
     });
 
     $scope.fetchDynos = function () {
@@ -29,7 +45,7 @@ angular.module('cambMonApp')
       if (!$scope.updating) {
         $scope.fetchDynos();
       }
-    }, 5000);
+    }, 30000);
 
     $scope.$on('$destroy', function() {
       $interval.cancel(autoRefesh);
