@@ -1,4 +1,4 @@
-<div class="row" ng-controller="DynoCtrl">
+<div class="row" ng-controller="DynosCtrl">
   <div class="col-md-3" ng-repeat="dyno in dynos">
     <div class="panel dyno-panel {{dyno.state}}">
       <div class="panel-heading">
@@ -12,6 +12,11 @@
           <i ng-class="{'fa-cube': dyno.type==='web', 'fa-file-text-o': dyno.type==='log', 'fa-cogs': dyno.type==='worker', 'fa-terminal': dyno.type==='run', 'fa-print': dyno.type==='pdf'}" class="fa"></i>
         </span>
         <p class="dyno-msg" dyno-status-message></p>
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" ng-attr-style="width: {{dyno.currentRam / ((dyno.size | to_i) * 512) * 100.0}}%;">
+            {{dyno.currentRam}} MB Used
+          </div>
+        </div>
       </div>
     </div>
   </div>

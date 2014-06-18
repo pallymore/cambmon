@@ -10,10 +10,10 @@ angular.module('cambMonApp')
 angular.module('cambMonApp')
   .controller('AppCtrl', function ($scope, $http, $routeParams) {
     var appName = $routeParams.name,
-      appApiUrl = '/api/apps/' + appName;
+    appApiUrl = '/api/apps/' + appName;
 
-    var handleAppLogs = function (logs) {
-      console.log(JSON.parse(logs.data));
+    var handleAppLogs = function (ramData) {
+      $scope.$emit('$updateRam', JSON.parse(ramData.data));
     };
 
     $http.get(appApiUrl).success(function(app) {
@@ -40,15 +40,27 @@ angular.module('cambMonApp')
   });
 
 angular.module('cambMonApp')
-  .controller('DynoCtrl', function ($scope, $http, $routeParams, $interval) {
-    var autoRefesh = $interval(function () {
-      if (!$scope.updating) {
-        $scope.fetchDynos();
-      }
-    }, 30000);
+  .controller('DynosCtrl', function ($scope, $http, $routeParams, $interval, $rootScope) {
+    // var autoRefesh = $interval(function () {
+    //   if (!$scope.updating) {
+    //     $scope.fetchDynos();
+    //   }
+    // }, 30000);
 
-    $scope.$on('$destroy', function() {
-      $interval.cancel(autoRefesh);
+    // $scope.$on('$destroy', function() {
+    //   $interval.cancel(autoRefesh);
+    // });
+
+    $rootScope.$on('$updateRam', function (rootScope, data) {
+      if ($scope.dynos && data["sample#memory_total"]) {
+        angular.forEach($scope.dynos, function (dyno) {
+          if (dyno.name === data.source) {
+            $scope.$apply(function () {
+              dyno.currentRam = parseFloat(data["sample#memory_total"]);
+            });
+          }
+        });
+      }
     });
 
     $scope.fetchDynos();
@@ -68,5 +80,13 @@ angular.module('cambMonApp')
       link: function (scope) {
         scope.dynoMessage = messages[scope.dyno.state];
       }
+    };
+  });
+
+
+angular.module('cambMonApp')
+  .filter('to_i', function() {
+    return function(input) {
+      return parseInt(input, 10);
     };
   });
