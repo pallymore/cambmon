@@ -13,7 +13,7 @@ angular.module('cambMonApp')
       appApiUrl = '/api/apps/' + appName;
 
     var handleAppLogs = function (logs) {
-      console.log(logs);
+      console.log(JSON.parse(logs.data));
     };
 
     $http.get(appApiUrl).success(function(app) {
