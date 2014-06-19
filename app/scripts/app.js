@@ -13,7 +13,7 @@ angular.module('cambMonApp', [
       })
       .when('/apps', {
         templateUrl: 'partials/main',
-        controller: 'MainCtrl'
+        controller: 'AppsCtrl'
       })
       .when('/apps/:name', {
         templateUrl: 'partials/app',

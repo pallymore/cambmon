@@ -1,11 +1,11 @@
 'use strict';
 
-describe('Controller: MainCtrl', function () {
+describe('Controller: AppsCtrl', function () {
 
   // load the controller's module
   beforeEach(module('cambMonApp'));
 
-  var MainCtrl,
+  var AppsCtrl,
     scope,
     $httpBackend;
 
@@ -15,7 +15,7 @@ describe('Controller: MainCtrl', function () {
     $httpBackend.expectGET('/api/awesomeThings')
       .respond(['HTML5 Boilerplate', 'AngularJS', 'Karma', 'Express']);
     scope = $rootScope.$new();
-    MainCtrl = $controller('MainCtrl', {
+    AppsCtrl = $controller('MainCtrl', {
       $scope: scope
     });
   }));
