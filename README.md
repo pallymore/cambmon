@@ -21,7 +21,7 @@ Start your development server with:
 grunt serve
 ```
 
-### Build & Deployment
+### Build & Deploy
 
 You should **build** your app first with this command:
 
