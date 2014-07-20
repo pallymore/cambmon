@@ -3,6 +3,8 @@ Da CambMon!
 
 Simple MEAN stack app to track your heroku apps!
 
+Demo: http://cambmon.herokuapp.com
+
 ### Before you start...
 
 You will need to set your heroku api key in this environment variable `HEROKU_API_KEY`
