@@ -5,30 +5,29 @@ Simple MEAN stack app to track your heroku apps!
 
 ### Before you start...
 
-You will need to set your heroku api key is the environment variable
-named: `HEROKU_API_KEY`
+You will need to set your heroku api key in this environment variable `HEROKU_API_KEY`
 
 e.g.:
 
-`
+```
 export HEROKU_API_KEY="yourawesomeherokuapikey"
-`
+```
 
 ### Development
 
 Start your development server with:
 
-`
+```
 grunt serve
-`
+```
 
 ### Build & Deployment
 
 You should **build** your app first with this command:
 
-`
+```
 grunt build
-`
+```
 
 It's gonna create/update the **/dist** folder with production code!
 
