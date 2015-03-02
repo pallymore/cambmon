@@ -13,7 +13,7 @@
         </span>
         <p class="dyno-msg" dyno-status-message></p>
         <div class="progress">
-          <div class="progress-bar" role="progressbar" ng-attr-style="width: {{dyno.currentRam / ((dyno.size | to_i) * 512) * 100.0}}%;">
+          <div class="progress-bar" role="progressbar" ng-attr-style="width: {{dyno.currentRam / dyno.maxRAM * 100.0}}%;">
             {{dyno.currentRam}} MB Used
           </div>
         </div>
