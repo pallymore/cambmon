@@ -18,10 +18,13 @@ angular.module('cambMonApp')
     var dynoMaxRAM = function dynoSize (dyno) {
       switch (dyno.size) {
         case "1X":
+        case "Standard-1X":
           return 512;
         case "2X":
+        case "Standard-2X":
           return 1024;
         case "PX":
+        case "Performance":
           return 6144;
       }
     };
